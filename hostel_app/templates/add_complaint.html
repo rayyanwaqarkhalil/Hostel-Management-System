@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Complaint</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<select name="student" class="form-control mb-2">
+ <option value="">Student Name</option>
+
+{% for s in students %}
+<option value="{{ s.id }}">{{ s.name }}</option>
+{% endfor %}
+
+</select>
+
+<textarea name="complaint_text"
+class="form-control mb-2"
+placeholder="Complaint"></textarea>
+
+<input type="date"
+name="complaint_date"
+class="form-control mb-2">
+
+
+
+<button class="btn btn-primary">
+Save Complaint
+</button>
+
+</form>
+
+{% endblock %}

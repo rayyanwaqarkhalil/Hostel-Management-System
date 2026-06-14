@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Edit Student</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text"
+           name="name"
+           value="{{ student.name }}"
+           class="form-control mb-2">
+
+    <select name="gender" class="form-control mb-2">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <input type="email"
+           name="email"
+           value="{{ student.email }}"
+           class="form-control mb-2">
+
+    <input type="text"
+           name="phone"
+           value="{{ student.phone }}"
+           class="form-control mb-2">
+
+    <textarea name="address"
+              class="form-control mb-2">{{ student.address }}</textarea>
+
+    <select name="room" class="form-control mb-2">
+        {% for room in rooms %}
+        <option value="{{ room.id }}">
+            Room {{ room.room_number }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" class="btn btn-primary">
+        Update Student
+    </button>
+
+</form>
+
+{% endblock %}

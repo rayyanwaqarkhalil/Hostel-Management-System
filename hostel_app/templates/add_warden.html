@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Warden</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input type="text" name="name"
+class="form-control mb-2" placeholder="Name">
+
+<input type="text" name="phone"
+class="form-control mb-2" placeholder="Phone">
+
+<select name="shift_time" class="form-control mb-2">
+    <option value="">Select Shift</option>
+    <option value="Morning">Morning</option>
+    <option value="Evening">Evening</option>
+    <option value="Night">Night</option>
+</select>
+
+<button class="btn btn-primary">
+Save Warden
+</button>
+
+</form>
+
+{% endblock %}

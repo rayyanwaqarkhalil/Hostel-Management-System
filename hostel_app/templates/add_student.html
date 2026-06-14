@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Student</h2>
+
+{% if error %}
+<div class="alert alert-danger">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="name" class="form-control mb-2" placeholder="Name">
+   <select name="gender" class="form-control mb-2">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+</select>
+    <input type="email"
+       name="email"
+       class="form-control mb-2"
+       placeholder="Email">
+    <input type="text" name="phone" class="form-control mb-2" placeholder="Phone">
+    <textarea name="address" class="form-control mb-2" placeholder="Address"></textarea>
+
+    <select name="room" class="form-control mb-2">
+
+    <option value="">Select Room</option>
+
+    {% for room in rooms %}
+        <option value="{{ room.id }}">
+            Room {{ room.room_number }}
+        </option>
+    {% endfor %}
+
+</select>
+
+<button class="btn btn-primary">Save Student</button>
+</form>
+
+{% endblock %}

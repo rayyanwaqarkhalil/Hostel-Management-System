@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Students List</h2>
+
+<a href="/students/add/" class="btn btn-success mb-3">
+    Add Student
+</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Room Number</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for s in students %}
+    <tr>
+
+        <td>{{ s.id }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.gender }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.phone }}</td>
+        <td>{{ s.address }}</td>
+        <td>{{ s.room.room_number }}</td>
+
+        <td>
+
+            <a href="/students/edit/{{ s.id }}/"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a href="/students/delete/{{ s.id }}/"
+               class="btn btn-danger btn-sm">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

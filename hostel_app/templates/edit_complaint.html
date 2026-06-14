@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Edit Complaint</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Student</label>
+
+    <select name="student" class="form-control mb-2">
+
+        {% for student in students %}
+
+        <option value="{{ student.id }}"
+        {% if student.id == complaint.student.id %}
+        selected
+        {% endif %}
+        >
+            {{ student.name }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <textarea
+        name="complaint_text"
+        class="form-control mb-2"
+        rows="4"
+    >{{ complaint.complaint_text }}</textarea>
+
+    <input
+        type="date"
+        name="complaint_date"
+        value="{{ complaint.complaint_date|date:'Y-m-d' }}"
+        class="form-control mb-2"
+    >
+
+    <select name="status" class="form-control mb-3">
+
+        <option value="Resolved"
+        {% if complaint.status == "Resolved" %}
+        selected
+        {% endif %}
+        >
+            Resolved
+        </option>
+
+        <option value="Unresolved"
+        {% if complaint.status == "Unresolved" %}
+        selected
+        {% endif %}
+        >
+            Unresolved
+        </option>
+
+    </select>
+
+    <button type="submit" class="btn btn-primary">
+        Update Complaint
+    </button>
+
+</form>
+
+{% endblock %}

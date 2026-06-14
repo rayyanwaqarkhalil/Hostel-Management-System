@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Complaints</h2>
+
+<a href="/complaints/add/" class="btn btn-success mb-3">
+Add Complaint
+</a>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Actions</th>
+<th>ID</th>
+<th>Student</th>
+<th>Complaint</th>
+<th>Status</th>
+</tr>
+
+{% for c in complaints %}
+<tr>
+<td>
+    <a href="/complaints/edit/{{ c.id }}/"
+       class="btn btn-warning btn-sm">
+       Edit
+    </a>
+</td>
+<td>{{ c.id }}</td>
+<td>{{ c.student }}</td>
+<td>{{ c.complaint_text }}</td>
+<td>{{ c.status }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
