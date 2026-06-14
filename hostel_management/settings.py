@@ -87,16 +87,7 @@ WSGI_APPLICATION = 'hostel_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hostelmanagementsystem',
-        'USER': 'root',
-        'PASSWORD': 'bellaciao$',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+
 
 
 # Password validation
